@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Camera, Upload, AlertCircle, Leaf, Bug, Droplet, Volume2, Save, Check, AlertTriangle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import CoffeeDiseases from "@/components/CoffeeDiseases";
 
 interface DiagnosisResult {
   labelAm: string;
@@ -269,6 +270,11 @@ const Diagnose = () => {
               </div>
             </div>
           </Card>
+
+          {/* Coffee Diseases Detail Section */}
+          {cropType === "coffee" && (
+            <CoffeeDiseases />
+          )}
 
           {/* Analyze Button */}
           <Button
