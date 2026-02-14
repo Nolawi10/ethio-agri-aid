@@ -12,6 +12,7 @@ import {
   Zap
 } from "lucide-react";
 import nolawiImage from "@/assets/team/nolawi.jpg";
+import CoffeeMission from "@/components/about/CoffeeMission";
 
 const About = () => {
   return (
@@ -197,6 +198,9 @@ const About = () => {
               </div>
             </Card>
           </div>
+
+          {/* Coffee & EthioAgri */}
+          <CoffeeMission />
 
           {/* Our Values */}
           <div className="space-y-6">
