@@ -13,8 +13,12 @@ import {
 } from "lucide-react";
 import nolawiImage from "@/assets/team/nolawi.jpg";
 import CoffeeMission from "@/components/about/CoffeeMission";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const About = () => {
+  const { language } = useLanguage();
+  const isAm = language === "am";
+
   return (
     <div className="min-h-screen pt-20 md:pt-24 pb-24 md:pb-8 bg-muted/30">
       <div className="container mx-auto px-4 py-8">
@@ -23,81 +27,69 @@ const About = () => {
           <div className="text-center space-y-4">
             <h1 className="text-3xl md:text-4xl font-bold flex items-center justify-center gap-3">
               <Users className="w-8 h-8 text-primary" />
-              <span className="ethiopic">ስለ እኛ</span> / About Us
+              {isAm ? "ስለ እኛ" : "About Us"}
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              <span className="ethiopic">EthioAgri - የኢትዮጵያ ገበሬዎችን በቴክኖሎጂ ለማገዝ የተቋቋመ</span>
-              <br />
-              <span className="text-sm">Empowering Ethiopian farmers through technology</span>
+              {isAm
+                ? "EthioAgri - የኢትዮጵያ ገበሬዎችን በቴክኖሎጂ ለማገዝ የተቋቋመ"
+                : "EthioAgri - Empowering Ethiopian farmers through technology"}
             </p>
           </div>
 
-          {/* Mission Statement - Top */}
+          {/* Mission Statement */}
           <Card className="p-6 bg-gradient-to-r from-primary/10 via-success/10 to-accent/10 border-primary/20">
             <div className="text-center space-y-4">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                 <Target className="w-8 h-8 text-primary" />
               </div>
               <h2 className="text-2xl font-bold">
-                <span className="ethiopic">ተልዕኳችን</span> / Our Mission
+                {isAm ? "ተልዕኳችን" : "Our Mission"}
               </h2>
-              <div className="max-w-2xl mx-auto space-y-2">
-                <p className="text-lg ethiopic text-muted-foreground">
-                  ብልህ እና በአካባቢ ተገቢ የሆነ ቴክኖሎጂን በመጠቀም በኢትዮጵያ ግብርናን ማጠናከር እና ገበሬዎችን በዘመናዊ መፍትሄዎች ማበረታታት።
-                </p>
-                <p className="text-muted-foreground">
-                  To strengthen agriculture in Ethiopia using intelligent and locally relevant technology, empowering farmers with modern solutions.
-                </p>
-              </div>
+              <p className="max-w-2xl mx-auto text-muted-foreground">
+                {isAm
+                  ? "ብልህ እና በአካባቢ ተገቢ የሆነ ቴክኖሎጂን በመጠቀም በኢትዮጵያ ግብርናን ማጠናከር እና ገበሬዎችን በዘመናዊ መፍትሄዎች ማበረታታት።"
+                  : "To strengthen agriculture in Ethiopia using intelligent and locally relevant technology, empowering farmers with modern solutions."}
+              </p>
             </div>
           </Card>
 
           {/* What We Do */}
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-center">
-              <span className="ethiopic">ምን እናደርጋለን?</span> / What We Do
+              {isAm ? "ምን እናደርጋለን?" : "What We Do"}
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <Card className="p-6 text-center hover:shadow-medium transition-shadow">
                 <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Leaf className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="font-bold mb-1">
-                  <span className="ethiopic">የሰብል ምርመራ</span>
-                </h3>
-                <p className="text-sm font-medium text-primary mb-2">Crop Diagnosis</p>
+                <h3 className="font-bold mb-2">{isAm ? "የሰብል ምርመራ" : "Crop Diagnosis"}</h3>
                 <p className="text-sm text-muted-foreground">
-                  <span className="ethiopic">በ AI ቴክኖሎጂ የሰብል በሽታዎችን በፎቶ ብቻ እንለያለን</span>
-                  <br />
-                  <span className="text-xs">AI-powered disease detection from photos</span>
+                  {isAm
+                    ? "በ AI ቴክኖሎጂ የሰብል በሽታዎችን በፎቶ ብቻ እንለያለን"
+                    : "AI-powered disease detection from photos"}
                 </p>
               </Card>
               <Card className="p-6 text-center hover:shadow-medium transition-shadow">
                 <div className="w-14 h-14 bg-success/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Lightbulb className="w-7 h-7 text-success" />
                 </div>
-                <h3 className="font-bold mb-1">
-                  <span className="ethiopic">ምክር እና መመሪያ</span>
-                </h3>
-                <p className="text-sm font-medium text-success mb-2">Advice & Guidance</p>
+                <h3 className="font-bold mb-2">{isAm ? "ምክር እና መመሪያ" : "Advice & Guidance"}</h3>
                 <p className="text-sm text-muted-foreground">
-                  <span className="ethiopic">ለገበሬዎች የሚጠቅም ባህላዊ እና ዘመናዊ የግብርና ምክር እንሰጣለን</span>
-                  <br />
-                  <span className="text-xs">Traditional and modern farming tips</span>
+                  {isAm
+                    ? "ለገበሬዎች የሚጠቅም ባህላዊ እና ዘመናዊ የግብርና ምክር እንሰጣለን"
+                    : "Traditional and modern farming tips"}
                 </p>
               </Card>
               <Card className="p-6 text-center hover:shadow-medium transition-shadow">
                 <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Globe className="w-7 h-7 text-accent" />
                 </div>
-                <h3 className="font-bold mb-1">
-                  <span className="ethiopic">የአየር ሁኔታ</span>
-                </h3>
-                <p className="text-sm font-medium text-accent mb-2">Weather Forecast</p>
+                <h3 className="font-bold mb-2">{isAm ? "የአየር ሁኔታ" : "Weather Forecast"}</h3>
                 <p className="text-sm text-muted-foreground">
-                  <span className="ethiopic">ለግብርና ተገቢ የሆነ የአየር ሁኔታ መረጃ እናቀርባለን</span>
-                  <br />
-                  <span className="text-xs">Agriculture-focused weather data</span>
+                  {isAm
+                    ? "ለግብርና ተገቢ የሆነ የአየር ሁኔታ መረጃ እናቀርባለን"
+                    : "Agriculture-focused weather data"}
                 </p>
               </Card>
             </div>
@@ -109,26 +101,29 @@ const About = () => {
               <div className="flex items-center gap-3">
                 <Heart className="w-6 h-6 text-destructive" />
                 <h2 className="text-xl font-bold">
-                  <span className="ethiopic">ለምን ይህን ፈጠርን?</span> / Why We Built This
+                  {isAm ? "ለምን ይህን ፈጠርን?" : "Why We Built This"}
                 </h2>
               </div>
-              <div className="space-y-4 text-muted-foreground">
-                <div className="ethiopic space-y-2">
-                  <p>
-                    ኢትዮጵያ ውስጥ ግብርና ለብዙ ሰዎች ዋና የገቢ ምንጭ ነው። ነገር ግን ብዙ ገበሬዎች በሰብል በሽታ፣ ባልተገቢ ውሃ አጠቃቀም እና የአየር ሁኔታ ችግሮች ይጎዳሉ።
-                  </p>
-                  <p>
-                    እነዚህን ችግሮች ለመፍታት EthioAgri ን ፈጠርን - ገበሬዎች በቴክኖሎጂ እንዲጠቀሙ፣ ችግሮችን ቀድመው እንዲያውቁ እና ምርታማነታቸውን እንዲጨምሩ ለመርዳት።
-                  </p>
-                </div>
-                <div className="border-t border-border pt-4 space-y-2">
-                  <p>
-                    In Ethiopia, agriculture is the primary source of income for millions of people. However, many farmers suffer from crop diseases, inefficient water usage, and unpredictable weather conditions.
-                  </p>
-                  <p>
-                    We built EthioAgri to solve these problems - helping farmers leverage technology to identify issues early, make informed decisions, and increase their productivity.
-                  </p>
-                </div>
+              <div className="space-y-3 text-muted-foreground">
+                {isAm ? (
+                  <>
+                    <p>
+                      ኢትዮጵያ ውስጥ ግብርና ለብዙ ሰዎች ዋና የገቢ ምንጭ ነው። ነገር ግን ብዙ ገበሬዎች በሰብል በሽታ፣ ባልተገቢ ውሃ አጠቃቀም እና የአየር ሁኔታ ችግሮች ይጎዳሉ።
+                    </p>
+                    <p>
+                      እነዚህን ችግሮች ለመፍታት EthioAgri ን ፈጠርን - ገበሬዎች በቴክኖሎጂ እንዲጠቀሙ፣ ችግሮችን ቀድመው እንዲያውቁ እና ምርታማነታቸውን እንዲጨምሩ ለመርዳት።
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      In Ethiopia, agriculture is the primary source of income for millions of people. However, many farmers suffer from crop diseases, inefficient water usage, and unpredictable weather conditions.
+                    </p>
+                    <p>
+                      We built EthioAgri to solve these problems - helping farmers leverage technology to identify issues early, make informed decisions, and increase their productivity.
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </Card>
@@ -136,7 +131,7 @@ const About = () => {
           {/* Founder Section */}
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-center">
-              <span className="ethiopic">መስራች</span> / Founder
+              {isAm ? "መስራች" : "Founder"}
             </h2>
             <Card className="p-6 md:p-8">
               <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
@@ -151,39 +146,51 @@ const About = () => {
                 <div className="flex-1 space-y-4 text-center md:text-left">
                   <div>
                     <h3 className="text-2xl font-bold">
-                      <span className="ethiopic">ኖላዊ ኃይሉ</span> / Nolawi Hailu
+                      {isAm ? "ኖላዊ ኃይሉ" : "Nolawi Hailu"}
                     </h3>
                     <p className="text-primary font-medium mt-1">
-                      <span className="ethiopic">AI ገንቢ እና መስራች</span> / AI Developer & Founder
+                      {isAm ? "AI ገንቢ እና መስራች" : "AI Developer & Founder"}
                     </p>
                   </div>
 
-                  <div className="space-y-4 text-muted-foreground">
-                    <div className="ethiopic">
-                      <p>
-                        ኖላዊ በኢትዮጵያ ውስጥ የተማረ ተማሪ AI ገንቢ ሲሆን ቴክኖሎጂን ተጠቅሞ ግብርናን ለማሻሻል እና ገበሬዎችን ለመደገፍ ትልቅ ፍላጎት አለው።
-                      </p>
-                    </div>
-                    <div className="border-t border-border pt-3 space-y-2">
-                      <p>
-                        I'm Nolawi Hailu, a student AI developer from Ethiopia with a strong passion for using technology to improve agriculture and support farmers.
-                      </p>
-                      <p>
-                        Growing up in Ethiopia, I've seen how important agriculture is to people's daily lives and how challenges like crop diseases, inefficient irrigation, and lack of timely information affect farmers. These experiences motivated me to build EthioAgri.
-                      </p>
-                      <p>
-                        I developed this platform by combining artificial intelligence, machine learning, and web technologies to help farmers detect crop diseases, access useful insights, and make better farming decisions. My focus is on creating tools that are affordable, easy to use, and suitable for local farming conditions.
-                      </p>
-                      <p>
-                        Beyond this project, I've worked on multiple AI and STEM initiatives in education, agriculture, and sustainability.
-                      </p>
-                    </div>
+                  <div className="space-y-3 text-muted-foreground">
+                    {isAm ? (
+                      <>
+                        <p>
+                          ኖላዊ በኢትዮጵያ ውስጥ የተማረ ተማሪ AI ገንቢ ሲሆን ቴክኖሎጂን ተጠቅሞ ግብርናን ለማሻሻል እና ገበሬዎችን ለመደገፍ ትልቅ ፍላጎት አለው።
+                        </p>
+                        <p>
+                          በኢትዮጵያ ውስጥ ሲያድግ ግብርና ለሰዎች ዕለት ተዕለት ኑሮ ምን ያህል አስፈላጊ እንደሆነ እና እንደ ሰብል በሽታዎች፣ ውሃ በአግባቡ አለመጠቀም እና ወቅታዊ መረጃ ማጣት ገበሬዎችን ምን ያህል እንደሚጎዳ ተመልክቷል። እነዚህ ተሞክሮዎች EthioAgri ን እንዲፈጥር አነሳሱት።
+                        </p>
+                        <p>
+                          ይህን መድረክ ሰው ሰራሽ ብልህነት (AI)፣ የማሽን ትምህርት እና የድር ቴክኖሎጂዎችን በማጣመር ገበሬዎች የሰብል በሽታዎችን እንዲያውቁ፣ ጠቃሚ ግንዛቤዎችን እንዲያገኙ እና የተሻለ የግብርና ውሳኔ እንዲያደርጉ ለመርዳት ፈጠረው።
+                        </p>
+                        <p>
+                          ከዚህ ፕሮጀክት ባሻገር በትምህርት፣ ግብርና እና ዘላቂነት ዘርፎች በበርካታ AI እና STEM ተነሳሽነቶች ላይ ሰርቷል።
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <p>
+                          I'm Nolawi Hailu, a student AI developer from Ethiopia with a strong passion for using technology to improve agriculture and support farmers.
+                        </p>
+                        <p>
+                          Growing up in Ethiopia, I've seen how important agriculture is to people's daily lives and how challenges like crop diseases, inefficient irrigation, and lack of timely information affect farmers. These experiences motivated me to build EthioAgri.
+                        </p>
+                        <p>
+                          I developed this platform by combining artificial intelligence, machine learning, and web technologies to help farmers detect crop diseases, access useful insights, and make better farming decisions. My focus is on creating tools that are affordable, easy to use, and suitable for local farming conditions.
+                        </p>
+                        <p>
+                          Beyond this project, I've worked on multiple AI and STEM initiatives in education, agriculture, and sustainability.
+                        </p>
+                      </>
+                    )}
                   </div>
 
                   <div className="flex items-center justify-center md:justify-start gap-3 pt-2 flex-wrap">
                     <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg">
                       <GraduationCap className="w-5 h-5 text-primary" />
-                      <span className="text-sm font-medium">Student Developer</span>
+                      <span className="text-sm font-medium">{isAm ? "ተማሪ ገንቢ" : "Student Developer"}</span>
                     </div>
                     <div className="flex items-center gap-2 px-4 py-2 bg-success/10 rounded-lg">
                       <Leaf className="w-5 h-5 text-success" />
@@ -205,7 +212,7 @@ const About = () => {
           {/* Our Values */}
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-center">
-              <span className="ethiopic">እሴቶቻችን</span> / Our Values
+              {isAm ? "እሴቶቻችን" : "Our Values"}
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <Card className="p-5 flex items-start gap-4">
@@ -213,11 +220,11 @@ const About = () => {
                   <Zap className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-bold mb-1">
-                    <span className="ethiopic">ፈጠራ</span> / Innovation
-                  </h3>
+                  <h3 className="font-bold mb-1">{isAm ? "ፈጠራ" : "Innovation"}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Using cutting-edge technology to provide better solutions for farmers
+                    {isAm
+                      ? "ለገበሬዎች የተሻለ መፍትሄ ለመስጠት ዘመናዊ ቴክኖሎጂ መጠቀም"
+                      : "Using cutting-edge technology to provide better solutions for farmers"}
                   </p>
                 </div>
               </Card>
@@ -226,11 +233,11 @@ const About = () => {
                   <Heart className="w-6 h-6 text-success" />
                 </div>
                 <div>
-                  <h3 className="font-bold mb-1">
-                    <span className="ethiopic">ቁርጠኝነት</span> / Commitment
-                  </h3>
+                  <h3 className="font-bold mb-1">{isAm ? "ቁርጠኝነት" : "Commitment"}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Dedicated to continuously improving farmers' lives and livelihoods
+                    {isAm
+                      ? "የገበሬዎችን ኑሮ እና መተዳደሪያ ያለማቋረጥ ለማሻሻል መሰጠት"
+                      : "Dedicated to continuously improving farmers' lives and livelihoods"}
                   </p>
                 </div>
               </Card>
@@ -239,11 +246,11 @@ const About = () => {
                   <Globe className="w-6 h-6 text-accent" />
                 </div>
                 <div>
-                  <h3 className="font-bold mb-1">
-                    <span className="ethiopic">ተደራሽነት</span> / Accessibility
-                  </h3>
+                  <h3 className="font-bold mb-1">{isAm ? "ተደራሽነት" : "Accessibility"}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Making technology simple and affordable for all farmers
+                    {isAm
+                      ? "ቴክኖሎጂን ለሁሉም ገበሬዎች ቀላል እና ተመጣጣኝ ማድረግ"
+                      : "Making technology simple and affordable for all farmers"}
                   </p>
                 </div>
               </Card>
@@ -252,11 +259,11 @@ const About = () => {
                   <Award className="w-6 h-6 text-destructive" />
                 </div>
                 <div>
-                  <h3 className="font-bold mb-1">
-                    <span className="ethiopic">ጥራት</span> / Quality
-                  </h3>
+                  <h3 className="font-bold mb-1">{isAm ? "ጥራት" : "Quality"}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Prioritizing accurate and reliable information for better decisions
+                    {isAm
+                      ? "ለተሻለ ውሳኔ ትክክለኛ እና አስተማማኝ መረጃ ቅድሚያ መስጠት"
+                      : "Prioritizing accurate and reliable information for better decisions"}
                   </p>
                 </div>
               </Card>
@@ -266,10 +273,12 @@ const About = () => {
           {/* Contact CTA */}
           <Card className="p-6 text-center bg-gradient-to-r from-primary/5 to-success/5">
             <h3 className="font-bold text-lg mb-2">
-              <span className="ethiopic">ጥያቄ ወይም አስተያየት አለዎት?</span>
+              {isAm ? "ጥያቄ ወይም አስተያየት አለዎት?" : "Have questions or feedback?"}
             </h3>
             <p className="text-muted-foreground">
-              Have questions or feedback? We'd love to hear from you!
+              {isAm
+                ? "ለማንኛውም ጥያቄ ወይም አስተያየት እባክዎ ያግኙን!"
+                : "We'd love to hear from you!"}
             </p>
           </Card>
         </div>
