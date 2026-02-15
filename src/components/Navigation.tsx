@@ -41,13 +41,13 @@ const Navigation = () => {
       {/* Desktop Navigation */}
       <nav className="hidden md:flex fixed top-0 left-0 right-0 z-50 bg-card border-b border-border shadow-soft">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/")}>
+          <div className="flex items-center h-16">
+            <div className="flex items-center gap-2 cursor-pointer shrink-0" onClick={() => navigate("/")}>
               <img src={logo} alt="Ethio Agri" className="w-10 h-10" />
               <span className="text-xl font-bold ethiopic">Ethio Agri</span>
             </div>
             
-            <div className="flex items-center gap-1">
+            <div className="flex-1 flex items-center justify-center gap-1">
               {navItems.map((item) => (
                 <NavLink
                   key={item.to}
@@ -58,11 +58,11 @@ const Navigation = () => {
                   <span className="font-medium">{t(item.labelKey)}</span>
                 </NavLink>
               ))}
-              
-              {/* Language Switcher */}
+            </div>
+            
+            <div className="flex items-center gap-1 shrink-0">
               <LanguageSwitcher />
               
-              {/* Auth Button */}
               {isAuthenticated ? (
                 <Button 
                   variant="outline"
