@@ -37,10 +37,10 @@ const Diagnose = () => {
       labelEn: "Nitrogen Deficiency",
       confidence: 0.92,
       type: "deficiency",
-      symptomsAm: "ቅጠሎች ቢጫ እና ስር ሚያሳዩ ስሜት። የታችኛው ቅጠሎች መጀመሪያ ይጎዳሉ።",
+      symptomsAm: "ቅጠሎች ቢጫ ቀለም ይይዛሉ እና ይረግፋሉ። የታችኛው ቅጠሎች መጀመሪያ ይጎዳሉ።",
       recommendations: [
         { type: "ማዳበሪያ", nameAm: "ዩሪያ", amount: "50 kg/ha", costEtb: 450 },
-        { type: "ኦርጋኒክ", nameAm: "የቡና ቅብ ኮምፖስት", amount: "5 ቶን/ha", costEtb: 200 }
+        { type: "ኦርጋኒክ", nameAm: "የቡና ቅርፊት ኮምፖስት", amount: "5 ቶን/ha", costEtb: 200 }
       ],
       regionAdviceAm: "በከፍታ ቦታዎች ከዝናብ በኋላ ማዳበሪያውን ይተግብሩ። DAP ከ UREA ጋር በማቀላቀል የተሻለ ውጤት ያገኛሉ።"
     },
@@ -49,7 +49,7 @@ const Diagnose = () => {
       labelEn: "Leaf Rust Disease",
       confidence: 0.87,
       type: "disease",
-      symptomsAm: "በቅጠሎች ላይ ቡኒ ወይም ብርቱካንማ ነጠብጣቦች ይታያሉ። ቅጠሎች ይደርቃሉ።",
+      symptomsAm: "በቅጠሎች ላይ ቡኒ ወይም ብርቱካናማ ነጠብጣቦች ይታያሉ። ቅጠሎች ይደርቃሉ።",
       recommendations: [
         { type: "ፀረ ፈንገስ", nameAm: "ማንኮዜብ", amount: "2.5 kg/ha", costEtb: 350 },
         { type: "ኦርጋኒክ", nameAm: "የኒም ዘይት", amount: "500 ml/ha", costEtb: 150 }
