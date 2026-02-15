@@ -11,7 +11,7 @@ const Home = () => {
     {
       icon: Camera,
       titleAm: "ፈጣን ምርመራ",
-      descAm: "በ AI የሚተገበር የምስል ትንታኔ የእፅዋት በሽታዎችን፣ ተባዮችን እና የንጥረ ነገሮችን እጥረት ይለያል",
+      descAm: "በ AI የሚሰራ የምስል ትንታኔ የእፅዋት በሽታዎችን፣ ተባዮችን እና የንጥረ ነገር እጥረቶችን ይለያል",
       color: "primary",
       link: "/diagnose"
     },
@@ -39,7 +39,7 @@ const Home = () => {
     {
       icon: Smartphone,
       titleAm: "ከመስመር ውጭ ድጋፍ",
-      descAm: "ያለ ኢንተርኔት ግንኙነት ሁሉንም ባህሪዎች ይጠቀሙ። መረጃ ይቀመጣል እና በኋላ ይመዛመዛል",
+      descAm: "ያለ ኢንተርኔት ግንኙነት ሁሉንም ባህሪዎች ይጠቀሙ። መረጃ ይቀመጣል እና ኢንተርኔት ሲኖር ይመዘገባል",
       color: "accent",
       link: "/diagnose"
     },
@@ -92,7 +92,7 @@ const Home = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-success/10 rounded-full mb-4">
             <Leaf className="w-4 h-4 text-success" />
             <span className="text-sm font-medium text-success ethiopic">
-              AI የሚተገበር የእፅዋት ጤንነት ምርመራ
+              AI የሚሰራ የእፅዋት ጤንነት ምርመራ
             </span>
           </div>
           
@@ -113,7 +113,7 @@ const Home = () => {
               onClick={() => navigate("/diagnose")}
             >
               <Camera className="w-5 h-5 mr-2" />
-              ፊታ ይውሰዱ - ምርመራን ይጀምሩ
+              ፎቶ ይውሰዱ - ምርመራ ይጀምሩ
             </Button>
             
             <Button
@@ -229,11 +229,11 @@ const Home = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <Leaf className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span>ተፈጥሮአዊ አማራጮች: የቡና ቅብ ኮምፖስት፣ አመድ፣ ፍግ</span>
+                  <span>ተፈጥሮአዊ አማራጮች: የቡና ቅርፊት ኮምፖስት፣ አመድ፣ ፍግ</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Leaf className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span>ወጪ ቆጣቢ ስሌት በኢትዮጵያ ብር</span>
+                  <span>ወጪ ቆጣቢ ግምት በኢትዮጵያ ብር</span>
                 </li>
               </ul>
             </Card>
@@ -247,7 +247,7 @@ const Home = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <Users className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                  <span>የላይ እጥረቶች ካርታ እና ትንታኔ</span>
+                  <span>የንጥረ ነገር እጥረቶች ካርታ እና ትንታኔ</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Users className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />

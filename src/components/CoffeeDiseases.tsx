@@ -217,7 +217,7 @@ const CoffeeDiseases = () => {
         <div className="space-y-3">
           {[
             { nameAm: "የቡና ፍሬ በሽታ (CBD)", nameEn: "Coffee Berry Disease", causeAm: "Colletotrichum kahawae ፈንገስ", symptomAm: "በቡና ፍሬ ላይ ጥቁር ቁስሎች", mgmtAm: "መግረዝ፣ የተበከሉ ፍሬዎችን ማስወገድ፣ ፀረ ፈንገስ" },
-            { nameAm: "የቡና ባክቴሪያ መድረቅ (CWD)", nameEn: "Coffee Wilt Disease", causeAm: "ባክቴሪያ", symptomAm: "ቅጠሎች ቢጫ ይሆናሉ፣ ዛፉ ይደርቃል", mgmtAm: "የተበከሉ ዛፎችን ማስወገድ፣ የሚቋቋሙ ዝርያዎች" },
+            { nameAm: "የቡና መድረቅ በሽታ (CWD)", nameEn: "Coffee Wilt Disease", causeAm: "Gibberella xylarioides ፈንገስ", symptomAm: "ቅጠሎች ቢጫ ይሆናሉ እና ይጠወልጋሉ፣ ዛፉ ይደርቃል", mgmtAm: "የተበከሉ ዛፎችን ቆርጦ ማቃጠል፣ የሚቋቋሙ ዝርያዎችን መጠቀም" },
             { nameAm: "አፊድ (ቅማል)", nameEn: "Aphids", causeAm: "ነፍሳት", symptomAm: "ቅጠሎች ይጠመዛዛሉ፣ እድገት ይቀንሳል", mgmtAm: "ኢንሰክቲሳይዳል ሳሙናዎች፣ ባዮሎጂካል ቁጥጥር" },
             { nameAm: "የቡና ነጭ ግንድ ቦሪ", nameEn: "Coffee White Stem Borer", causeAm: "ነፍሳት", symptomAm: "በቡና ግንድ ውስጥ ዋሻ መቆፈር፣ ቅርንጫፎች መድረቅ", mgmtAm: "መደበኛ መግረዝ፣ የተበከሉ ቅርንጫፎችን ማስወገድ" },
             { nameAm: "የቡና ኒማቶድ", nameEn: "Coffee Nematode", causeAm: "ኒማቶድ", symptomAm: "ድቅቅ ያለ እድገት፣ ሥር ጉብታዎች", mgmtAm: "ሰብል ማሽከርከር፣ አፈር ፉሚጌሽን" },
