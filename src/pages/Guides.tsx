@@ -75,7 +75,7 @@ const Guides = () => {
       bookTitleAm: "የኢትዮጵያ የኦርጋኒክ ግብርና መመሪያ",
       bookTitleEn: "Ethiopian Organic Agriculture Guide",
       bookAuthor: "Ministry of Agriculture",
-      category: "composting"
+      category: "coffee"
     },
     {
       id: 2,
@@ -310,12 +310,170 @@ const Guides = () => {
       bookTitleEn: "Modern Crop Rotation Methods",
       bookAuthor: "CIMMYT",
       category: "soil"
+    },
+    // Coffee-specific guides
+    {
+      id: 11,
+      titleAm: "የቡና ቅጠል ዝገት (CLR) መከላከል",
+      titleEn: "Coffee Leaf Rust (CLR) Prevention",
+      descriptionAm: "እስከ 40-50% ምርት ኪሳራ የሚያስከትል ዋና በሽታ መከላከያ",
+      descriptionEn: "Prevent the #1 disease causing 40-50% yield loss",
+      contentAm: [
+        "ቢጫ-ብርቱካናማ ዱቄት በቅጠል ስር ይመልከቱ",
+        "የተበከሉ ቅጠሎችን ወዲያውኑ ይቁረጡ",
+        "ኮፐር ኦክሲክሎራይድ 50% WP ይረጩ (50g/20L ውሃ)",
+        "በዛፎች መካከል በቂ ክፍተት ይጠብቁ (2x2m)",
+        "ዝገት የሚቋቋሙ ዝርያዎች ይጠቀሙ (74110, 74112)"
+      ],
+      contentEn: [
+        "Look for yellow-orange powder under leaves",
+        "Remove infected leaves immediately",
+        "Spray Copper Oxychloride 50% WP (50g/20L water)",
+        "Maintain proper spacing between trees (2x2m)",
+        "Use resistant varieties (74110, 74112)"
+      ],
+      bookUrl: "https://www.eiar.gov.et",
+      bookTitleAm: "የቡና ቅጠል ዝገት አስተዳደር",
+      bookTitleEn: "Coffee Leaf Rust Management",
+      bookAuthor: "EIAR / Jimma Research Center",
+      category: "coffee"
+    },
+    {
+      id: 12,
+      titleAm: "የቡና ቤሪ በሽታ (CBD) መከላከል",
+      titleEn: "Coffee Berry Disease (CBD) Control",
+      descriptionAm: "30-40% የሚሆን ቤሪ ምርት የሚያወድም በሽታ",
+      descriptionEn: "Disease destroying 30-40% of berry harvest",
+      contentAm: [
+        "በቤሪ ላይ ጥቁር ነጠብጣብ ይፈልጉ",
+        "ከአበባ ጊዜ ጀምሮ ፈንገስ መድሃኒት ይረጩ",
+        "በየ2 ሳምንቱ 3-4 ጊዜ ይረጩ",
+        "የተበከሉ ቤሪዎችን ያስወግዱ",
+        "ንፅህናን ይጠብቁ - የወደቁ ቤሪዎችን ያስወግዱ"
+      ],
+      contentEn: [
+        "Look for dark sunken spots on berries",
+        "Start fungicide spraying from flowering",
+        "Spray 3-4 times every 2 weeks",
+        "Remove infected berries immediately",
+        "Maintain hygiene - remove fallen berries"
+      ],
+      bookUrl: "https://www.eiar.gov.et",
+      bookTitleAm: "የቡና ቤሪ በሽታ ቁጥጥር",
+      bookTitleEn: "CBD Control in Ethiopian Coffee",
+      bookAuthor: "Jimma Agricultural Research Center",
+      category: "coffee"
+    },
+    {
+      id: 13,
+      titleAm: "የቡና ዊልት በሽታ መከላከል",
+      titleEn: "Coffee Wilt Disease (CWD) Management",
+      descriptionAm: "ዛፍን ሙሉ በሙሉ ሊገድል የሚችል አደገኛ በሽታ",
+      descriptionEn: "Lethal disease that can kill entire coffee trees",
+      contentAm: [
+        "ቅጠሎች መጠውጠው እና መድረቅ ዋና ምልክት ነው",
+        "የተበከሉ ዛፎችን ወዲያውኑ ቆርጠው ያቃጥሉ",
+        "መሳሪያዎችን ከአጠቃቀም በፊት ያፅዱ",
+        "ከተበከለ ቦታ ችግኝ አያስተላልፉ",
+        "ተቋቋሚ ዝርያዎችን ለመተካት ይጠቀሙ"
+      ],
+      contentEn: [
+        "Wilting and drying leaves are the main symptom",
+        "Remove and burn infected trees immediately",
+        "Sanitize tools before and after use",
+        "Never transfer seedlings from infected areas",
+        "Use resistant varieties for replacement"
+      ],
+      bookUrl: "https://www.cabi.org",
+      bookTitleAm: "የቡና ዊልት በሽታ በኢትዮጵያ",
+      bookTitleEn: "Coffee Wilt Disease in Ethiopia",
+      bookAuthor: "CABI",
+      category: "coffee"
+    },
+    {
+      id: 14,
+      titleAm: "የጥላ ዛፍ አስተዳደር ለቡና",
+      titleEn: "Shade Tree Management for Coffee",
+      descriptionAm: "ለቡና ዛፍ ተስማሚ ጥላ ማዘጋጀት - ምርትን 20-30% ያሳድጋል",
+      descriptionEn: "Proper shade management increases yield by 20-30%",
+      contentAm: [
+        "40-60% ጥላ ሽፋን ለቡና ተስማሚ ነው",
+        "ግራቪሊያ፣ ኮርዲያ እና ብሰና ጥሩ ጥላ ዛፎች ናቸው",
+        "ከቡና ዛፍ 8-10 ሜትር ርቀት ይትከሉ",
+        "በየዓመቱ ቅርንጫፎችን ይከርክሙ",
+        "ጥላ ከመጠን በላይ ከሆነ በሽታ ይጨምራል"
+      ],
+      contentEn: [
+        "40-60% shade cover is ideal for coffee",
+        "Grevillea, Cordia and Bisana are good shade trees",
+        "Plant shade trees 8-10m from coffee trees",
+        "Prune branches annually",
+        "Excessive shade increases disease risk"
+      ],
+      bookUrl: "https://www.worldagroforestry.org",
+      bookTitleAm: "የቡና አግሮፎረስትሪ ስርዓት",
+      bookTitleEn: "Coffee Agroforestry Systems",
+      bookAuthor: "World Agroforestry (ICRAF)",
+      category: "coffee"
+    },
+    {
+      id: 15,
+      titleAm: "የቡና ምርት ስብሰባ እና ማድረቅ",
+      titleEn: "Coffee Harvesting & Drying",
+      descriptionAm: "ከፍተኛ ጥራት ያለው ቡና ለመስብሰብ እና ለማድረቅ",
+      descriptionEn: "Harvest and dry coffee for maximum quality and price",
+      contentAm: [
+        "ቀይ የበሰሉ ቤሪዎችን ብቻ ይቁረጡ",
+        "ከ3-4 ዙር ስብሰባ ያድርጉ",
+        "ቤሪዎችን በ4-6 ሴ.ሜ ውፍረት በፀሐይ ያድርቁ",
+        "በየ2-3 ሰዓት ያናውጡ",
+        "ከ11-12% እርጥበት ሲደርስ ያስቀምጡ"
+      ],
+      contentEn: [
+        "Pick only red ripe cherries",
+        "Do 3-4 rounds of selective picking",
+        "Sun-dry cherries at 4-6cm thickness",
+        "Turn every 2-3 hours",
+        "Store when moisture reaches 11-12%"
+      ],
+      bookUrl: "https://www.ecx.com.et",
+      bookTitleAm: "የቡና ጥራት ደረጃዎች",
+      bookTitleEn: "Coffee Quality Standards",
+      bookAuthor: "Ethiopian Commodity Exchange (ECX)",
+      category: "coffee"
+    },
+    {
+      id: 16,
+      titleAm: "የቡና ችግኝ አስተዳደር",
+      titleEn: "Coffee Seedling Nursery Management",
+      descriptionAm: "ጠንካራ ችግኞችን ለማሳደግ የችግኝ ጣቢያ አያያዝ",
+      descriptionEn: "Nursery management to grow strong healthy seedlings",
+      contentAm: [
+        "ከጥራት ያለው ዘር ይጀምሩ - ከተረጋገጠ ምንጭ",
+        "ችግኞችን በ40% ጥላ ስር ያሳድጉ",
+        "በቀን 2 ጊዜ ውሃ ያጠጡ",
+        "ከ6-8 ወር ሲሆናቸው ወደ ማሳ ያስተላልፉ",
+        "ከመትከል 2 ሳምንት በፊት ጥላ ይቀንሱ (ማጠንከር)"
+      ],
+      contentEn: [
+        "Start with quality seed from certified sources",
+        "Grow seedlings under 40% shade",
+        "Water twice daily",
+        "Transfer to field at 6-8 months",
+        "Reduce shade 2 weeks before transplanting (hardening)"
+      ],
+      bookUrl: "https://www.eiar.gov.et",
+      bookTitleAm: "የቡና ችግኝ ማሳደግ መመሪያ",
+      bookTitleEn: "Coffee Seedling Production Guide",
+      bookAuthor: "EIAR",
+      category: "coffee"
     }
   ];
 
   const guideCategories = [
     { id: "all", icon: BookOpen, labelAm: "ሁሉም", labelEn: "All" },
-    { id: "composting", icon: Leaf, labelAm: "ኮምፖስት", labelEn: "Composting" },
+    { id: "coffee", icon: Leaf, labelAm: "ቡና", labelEn: "Coffee" },
+    { id: "composting", icon: Sprout, labelAm: "ኮምፖስት", labelEn: "Composting" },
     { id: "fertilizer", icon: Sprout, labelAm: "ማዳበሪያ", labelEn: "Fertilizer" },
     { id: "pest-control", icon: Shield, labelAm: "ተባይ መከላከያ", labelEn: "Pest Control" },
     { id: "water", icon: Droplet, labelAm: "ውሃ", labelEn: "Water" },
@@ -325,6 +483,22 @@ const Guides = () => {
   const videoTutorials = [
     {
       id: 1,
+      titleAm: "የቡና ቅጠል ዝገት (CLR) ምልክቶች እና መከላከል",
+      titleEn: "Coffee Leaf Rust: Symptoms & Prevention",
+      duration: "14:20",
+      views: "52.3K",
+      thumbnail: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400"
+    },
+    {
+      id: 2,
+      titleAm: "የቡና ቤሪ በሽታ (CBD) ቁጥጥር ዘዴዎች",
+      titleEn: "Coffee Berry Disease Control Methods",
+      duration: "11:45",
+      views: "38.7K",
+      thumbnail: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400"
+    },
+    {
+      id: 3,
       titleAm: "የቡና ኮምፖስት ዝግጅት ቪዲዮ",
       titleEn: "Coffee Composting Video Tutorial",
       duration: "12:45",
@@ -332,7 +506,7 @@ const Guides = () => {
       thumbnail: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400"
     },
     {
-      id: 2,
+      id: 4,
       titleAm: "ኦርጋኒክ ፀረ ተባይ ማዘጋጀት",
       titleEn: "Preparing Organic Pesticide",
       duration: "8:30",
@@ -340,7 +514,15 @@ const Guides = () => {
       thumbnail: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400"
     },
     {
-      id: 3,
+      id: 5,
+      titleAm: "የቡና ጥላ ዛፍ አስተዳደር",
+      titleEn: "Coffee Shade Tree Management",
+      duration: "16:10",
+      views: "29.4K",
+      thumbnail: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400"
+    },
+    {
+      id: 6,
       titleAm: "የጤፍ ዘመናዊ ዝርያ ዘዴዎች",
       titleEn: "Modern Teff Planting Techniques",
       duration: "15:20",
@@ -348,12 +530,36 @@ const Guides = () => {
       thumbnail: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400"
     },
     {
-      id: 4,
+      id: 7,
       titleAm: "ጠብታ መስኖ ማዘጋጃ",
       titleEn: "Drip Irrigation Setup",
       duration: "10:15",
       views: "18.9K",
       thumbnail: "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?w=400"
+    },
+    {
+      id: 8,
+      titleAm: "የቡና ምርት ስብሰባ እና ጥራት ቁጥጥር",
+      titleEn: "Coffee Harvesting & Quality Control",
+      duration: "18:30",
+      views: "41.2K",
+      thumbnail: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400"
+    },
+    {
+      id: 9,
+      titleAm: "የቡና ችግኝ ጣቢያ አያያዝ",
+      titleEn: "Coffee Nursery Management Guide",
+      duration: "13:55",
+      views: "33.6K",
+      thumbnail: "https://images.unsplash.com/photo-1518568740540-032a73cce8a2?w=400"
+    },
+    {
+      id: 10,
+      titleAm: "የቡና ዊልት በሽታ ቅድመ ጥንቃቄ",
+      titleEn: "Coffee Wilt Disease Early Detection",
+      duration: "9:40",
+      views: "27.8K",
+      thumbnail: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400"
     }
   ];
 
