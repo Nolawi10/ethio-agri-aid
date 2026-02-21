@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { getCurrentUser, isTokenValid } from "@/utils/api";
 
 interface User {
   id: string;
@@ -26,39 +27,78 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Check for existing session
+    // Check for existing session and validate token
     const savedUser = localStorage.getItem("ethioagri-user");
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
+    const token = localStorage.getItem("ethioagri-token");
+    
+    if (savedUser && token && isTokenValid()) {
+      // Validate token with server and get fresh user data
+      getCurrentUser().then(userData => {
+        if (userData) {
+          setUser(userData);
+          localStorage.setItem("ethioagri-user", JSON.stringify(userData));
+        } else {
+          // Token invalid, clear stored data
+          setUser(null);
+          localStorage.removeItem("ethioagri-user");
+          localStorage.removeItem("ethioagri-token");
+        }
+        setIsLoading(false);
+      }).catch(() => {
+        // On error, clear stored data
+        setUser(null);
+        localStorage.removeItem("ethioagri-user");
+        localStorage.removeItem("ethioagri-token");
+        setIsLoading(false);
+      });
+    } else {
+      // No valid session
+      setUser(null);
+      localStorage.removeItem("ethioagri-user");
+      localStorage.removeItem("ethioagri-token");
+      setIsLoading(false);
     }
-    setIsLoading(false);
   }, []);
 
   const login = async (email: string, password: string): Promise<boolean> => {
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Check if user exists in localStorage
-    const users = JSON.parse(localStorage.getItem("ethioagri-users") || "[]");
-    const foundUser = users.find((u: any) => u.email === email && u.password === password);
-    
-    if (foundUser) {
-      const userData = { id: foundUser.id, name: foundUser.name, email: foundUser.email, phone: foundUser.phone };
-      setUser(userData);
-      localStorage.setItem("ethioagri-user", JSON.stringify(userData));
-      setIsLoading(false);
-      toast({
-        title: "Welcome back!",
-        description: `Logged in as ${foundUser.name}`,
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
       });
-      return true;
-    } else {
+
+      const data = await response.json();
+
+      if (data.success) {
+        const userData = data.user;
+        setUser(userData);
+        localStorage.setItem("ethioagri-user", JSON.stringify(userData));
+        localStorage.setItem("ethioagri-token", data.token);
+        setIsLoading(false);
+        toast({
+          title: "Welcome back!",
+          description: `Logged in as ${userData.name}`,
+        });
+        return true;
+      } else {
+        setIsLoading(false);
+        toast({
+          title: "Login failed",
+          description: data.message || "Invalid email or password",
+          variant: "destructive",
+        });
+        return false;
+      }
+    } catch (error) {
       setIsLoading(false);
       toast({
         title: "Login failed",
-        description: "Invalid email or password",
+        description: "Network error. Please try again.",
         variant: "destructive",
       });
       return false;
@@ -68,50 +108,53 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const signup = async (name: string, email: string, phone: string, password: string): Promise<boolean> => {
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Check if user already exists
-    const users = JSON.parse(localStorage.getItem("ethioagri-users") || "[]");
-    const existingUser = users.find((u: any) => u.email === email);
-    
-    if (existingUser) {
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, phone, password }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        const userData = data.user;
+        setUser(userData);
+        localStorage.setItem("ethioagri-user", JSON.stringify(userData));
+        localStorage.setItem("ethioagri-token", data.token);
+        
+        setIsLoading(false);
+        toast({
+          title: "Account created!",
+          description: `Welcome, ${name}!`,
+        });
+        return true;
+      } else {
+        setIsLoading(false);
+        toast({
+          title: "Signup failed",
+          description: data.message || "Failed to create account",
+          variant: "destructive",
+        });
+        return false;
+      }
+    } catch (error) {
       setIsLoading(false);
       toast({
         title: "Signup failed",
-        description: "An account with this email already exists",
+        description: "Network error. Please try again.",
         variant: "destructive",
       });
       return false;
     }
-    
-    // Create new user
-    const newUser = {
-      id: crypto.randomUUID(),
-      name,
-      email,
-      phone,
-      password, // In production, this should be hashed
-    };
-    
-    users.push(newUser);
-    localStorage.setItem("ethioagri-users", JSON.stringify(users));
-    
-    const userData = { id: newUser.id, name: newUser.name, email: newUser.email, phone: newUser.phone };
-    setUser(userData);
-    localStorage.setItem("ethioagri-user", JSON.stringify(userData));
-    
-    setIsLoading(false);
-    toast({
-      title: "Account created!",
-      description: `Welcome, ${name}!`,
-    });
-    return true;
   };
 
   const logout = () => {
     setUser(null);
     localStorage.removeItem("ethioagri-user");
+    localStorage.removeItem("ethioagri-token");
     toast({
       title: "Logged out",
       description: "You have been logged out successfully",

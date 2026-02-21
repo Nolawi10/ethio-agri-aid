@@ -483,83 +483,39 @@ const Guides = () => {
   const videoTutorials = [
     {
       id: 1,
-      titleAm: "የቡና ቅጠል ዝገት (CLR) ምልክቶች እና መከላከል",
-      titleEn: "Coffee Leaf Rust: Symptoms & Prevention",
-      duration: "14:20",
-      views: "52.3K",
-      thumbnail: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400"
-    },
-    {
-      id: 2,
-      titleAm: "የቡና ቤሪ በሽታ (CBD) ቁጥጥር ዘዴዎች",
-      titleEn: "Coffee Berry Disease Control Methods",
-      duration: "11:45",
-      views: "38.7K",
-      thumbnail: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400"
-    },
-    {
-      id: 3,
       titleAm: "የቡና ኮምፖስት ዝግጅት ቪዲዮ",
       titleEn: "Coffee Composting Video Tutorial",
       duration: "12:45",
       views: "15.2K",
-      thumbnail: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400"
+      thumbnail: "https://img.youtube.com/vi/z_rIUz17mR4/maxresdefault.jpg",
+      youtubeId: "z_rIUz17mR4"
     },
     {
-      id: 4,
+      id: 2,
       titleAm: "ኦርጋኒክ ፀረ ተባይ ማዘጋጀት",
       titleEn: "Preparing Organic Pesticide",
       duration: "8:30",
       views: "23.1K",
-      thumbnail: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400"
+      thumbnail: "https://img.youtube.com/vi/k141Jh28UCw/maxresdefault.jpg",
+      youtubeId: "k141Jh28UCw"
     },
     {
-      id: 5,
-      titleAm: "የቡና ጥላ ዛፍ አስተዳደር",
-      titleEn: "Coffee Shade Tree Management",
-      duration: "16:10",
-      views: "29.4K",
-      thumbnail: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400"
-    },
-    {
-      id: 6,
+      id: 3,
       titleAm: "የጤፍ ዘመናዊ ዝርያ ዘዴዎች",
       titleEn: "Modern Teff Planting Techniques",
       duration: "15:20",
       views: "45.8K",
-      thumbnail: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400"
+      thumbnail: "https://img.youtube.com/vi/DVKRdPjZHu0/maxresdefault.jpg",
+      youtubeId: "DVKRdPjZHu0"
     },
     {
-      id: 7,
+      id: 4,
       titleAm: "ጠብታ መስኖ ማዘጋጃ",
       titleEn: "Drip Irrigation Setup",
       duration: "10:15",
       views: "18.9K",
-      thumbnail: "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?w=400"
-    },
-    {
-      id: 8,
-      titleAm: "የቡና ምርት ስብሰባ እና ጥራት ቁጥጥር",
-      titleEn: "Coffee Harvesting & Quality Control",
-      duration: "18:30",
-      views: "41.2K",
-      thumbnail: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400"
-    },
-    {
-      id: 9,
-      titleAm: "የቡና ችግኝ ጣቢያ አያያዝ",
-      titleEn: "Coffee Nursery Management Guide",
-      duration: "13:55",
-      views: "33.6K",
-      thumbnail: "https://images.unsplash.com/photo-1518568740540-032a73cce8a2?w=400"
-    },
-    {
-      id: 10,
-      titleAm: "የቡና ዊልት በሽታ ቅድመ ጥንቃቄ",
-      titleEn: "Coffee Wilt Disease Early Detection",
-      duration: "9:40",
-      views: "27.8K",
-      thumbnail: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400"
+      thumbnail: "https://img.youtube.com/vi/Xej22GsLLQA/maxresdefault.jpg",
+      youtubeId: "Xej22GsLLQA"
     }
   ];
 
