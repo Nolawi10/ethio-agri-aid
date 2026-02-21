@@ -9,9 +9,10 @@ import {
   BookOpen, Leaf, Droplet, Shield, Download, ExternalLink, FileText, Sprout, 
   Trees, Mountain, Wheat, Search, Play, Calendar, HelpCircle, MessageCircle,
   CheckCircle, XCircle, Award, Clock, Users, Star, ChevronRight, Lightbulb,
-  ThumbsUp, Filter, Sun, CloudRain, Thermometer
+  ThumbsUp, Filter, Sun, CloudRain, Thermometer, User, Lock
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface Guide {
   id: number;
@@ -40,6 +41,7 @@ interface QuizQuestion {
 
 const Guides = () => {
   const { language, t } = useLanguage();
+  const { user, isAuthenticated } = useAuth();
   const [selectedGuide, setSelectedGuide] = useState<Guide | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -49,6 +51,7 @@ const Guides = () => {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const [savedGuides, setSavedGuides] = useState<number[]>([]);
 
   const indigenousMethods: Guide[] = [
     {
@@ -712,12 +715,39 @@ const Guides = () => {
     setQuizCompleted(false);
   };
 
+  // Load saved guides from localStorage
+  useState(() => {
+    if (isAuthenticated) {
+      const saved = localStorage.getItem(`ethioagri-saved-guides-${user?.id}`);
+      if (saved) {
+        setSavedGuides(JSON.parse(saved));
+      }
+    }
+  });
+
+  const toggleSaveGuide = (guideId: number) => {
+    if (!isAuthenticated) {
+      return; // Only authenticated users can save guides
+    }
+
+    const newSavedGuides = savedGuides.includes(guideId)
+      ? savedGuides.filter(id => id !== guideId)
+      : [...savedGuides, guideId];
+    
+    setSavedGuides(newSavedGuides);
+    localStorage.setItem(`ethioagri-saved-guides-${user?.id}`, JSON.stringify(newSavedGuides));
+  };
+
+  const isGuideSaved = (guideId: number) => {
+    return savedGuides.includes(guideId);
+  };
+
   return (
     <div className="min-h-screen pt-20 md:pt-24 pb-24 md:pb-8 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Header */}
-          <div className="text-center space-y-2">
+          <div className="text-center space-y-4">
             <h1 className="text-3xl md:text-4xl font-bold ethiopic">
               {language === "am" ? "የግብርና መመሪያዎች" : "Agricultural Guides"}
             </h1>
@@ -726,6 +756,46 @@ const Guides = () => {
                 ? "ከመስመር ውጭ ሊደረሱ የሚችሉ ሙሉ የግብርና ምክሮች እና መመሪያዎች"
                 : "Comprehensive agricultural tips and guides available offline"}
             </p>
+            
+            {/* User Welcome Message */}
+            {isAuthenticated && user && (
+              <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 max-w-md mx-auto">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                    <User className="w-5 h-5 text-primary-foreground" />
+                  </div>
+                  <div className="text-left">
+                    <p className="font-medium ethiopic">
+                      {language === "am" ? `እንደል ደለል, ${user.name}` : `Welcome back, ${user.name}`}
+                    </p>
+                    <p className="text-sm text-muted-foreground ethiopic">
+                      {language === "am" 
+                        ? `${savedGuides.length} መመሪያዎች ተባይዋል`
+                        : `${savedGuides.length} guides saved`}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Login Prompt for Guests */}
+            {!isAuthenticated && (
+              <div className="bg-accent/10 border border-accent/20 rounded-lg p-4 max-w-md mx-auto">
+                <div className="flex items-center gap-3">
+                  <Lock className="w-10 h-10 text-accent" />
+                  <div className="text-left">
+                    <p className="font-medium ethiopic">
+                      {language === "am" ? "ይግብር ይለም" : "Sign in Required"}
+                    </p>
+                    <p className="text-sm text-muted-foreground ethiopic">
+                      {language === "am" 
+                        ? "መመሪያዎች ለማጠቀም እና ማህበረሰባችንን ይቀላቀሉ"
+                        : "Sign in to save guides and track your progress"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Main Tabs */}
@@ -795,9 +865,35 @@ const Guides = () => {
                         <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                           <Leaf className="w-5 h-5 text-primary" />
                         </div>
-                        <span className="text-xs px-2 py-1 bg-muted rounded-full ethiopic">
-                          {guideCategories.find(c => c.id === method.category)?.[language === "am" ? "labelAm" : "labelEn"]}
-                        </span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs px-2 py-1 bg-muted rounded-full ethiopic">
+                            {guideCategories.find(c => c.id === method.category)?.[language === "am" ? "labelAm" : "labelEn"]}
+                          </span>
+                          {/* Save Button */}
+                          {isAuthenticated && (
+                            <Button
+                              size="sm"
+                              variant={isGuideSaved(method.id) ? "default" : "outline"}
+                              className="h-6 px-2 text-xs"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                toggleSaveGuide(method.id);
+                              }}
+                            >
+                              {isGuideSaved(method.id) ? (
+                                <>
+                                  <Star className="w-3 h-3 fill-current" />
+                                  {language === "am" ? "ተባይዋል" : "Saved"}
+                                </>
+                              ) : (
+                                <>
+                                  <Star className="w-3 h-3" />
+                                  {language === "am" ? "አስብ" : "Save"}
+                                </>
+                              )}
+                            </Button>
+                          )}
+                        </div>
                       </div>
                       <h4 className="font-bold ethiopic text-sm leading-tight">
                         {language === "am" ? method.titleAm : method.titleEn}
@@ -805,10 +901,18 @@ const Guides = () => {
                       <p className="text-xs text-muted-foreground ethiopic line-clamp-2">
                         {language === "am" ? method.descriptionAm : method.descriptionEn}
                       </p>
-                      <div className="flex items-center gap-1 text-xs text-primary group-hover:underline">
-                        <FileText className="w-3 h-3" />
-                        <span className="ethiopic">{language === "am" ? "መመሪያ ያንብቡ" : "Read Guide"}</span>
-                        <ChevronRight className="w-3 h-3" />
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-1 text-xs text-primary group-hover:underline">
+                          <FileText className="w-3 h-3" />
+                          <span className="ethiopic">{language === "am" ? "መመሪያ ያንብቡ" : "Read Guide"}</span>
+                          <ChevronRight className="w-3 h-3" />
+                        </div>
+                        {!isAuthenticated && (
+                          <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <Lock className="w-3 h-3" />
+                            <span className="ethiopic">{language === "am" ? "ይለም" : "Login"}</span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </Card>
@@ -987,7 +1091,25 @@ const Guides = () => {
 
             {/* Quiz Tab */}
             <TabsContent value="quiz" className="space-y-6 mt-6">
-              {!quizStarted ? (
+              {!isAuthenticated ? (
+                <Card className="p-8 text-center">
+                  <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Lock className="w-10 h-10 text-accent" />
+                  </div>
+                  <h3 className="text-xl font-bold ethiopic mb-2">
+                    {language === "am" ? "ይግብር ይለም" : "Authentication Required"}
+                  </h3>
+                  <p className="text-muted-foreground ethiopic mb-6">
+                    {language === "am"
+                      ? "ፈተና ይፈጅል ለማጠቀም እና እውቀት ደረጃ ይቀላቀሉ"
+                      : "Please sign in to access the quiz and track your progress"}
+                  </p>
+                  <Button onClick={() => window.location.href = '/auth'} size="lg" className="ethiopic">
+                    <User className="w-4 h-4 mr-2" />
+                    {language === "am" ? "ይግብር ይለም" : "Sign In to Continue"}
+                  </Button>
+                </Card>
+              ) : !quizStarted ? (
                 <Card className="p-8 text-center">
                   <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Award className="w-10 h-10 text-primary" />
@@ -997,7 +1119,7 @@ const Guides = () => {
                   </h3>
                   <p className="text-muted-foreground ethiopic mb-6">
                     {language === "am"
-                      ? "የተማሩትን ይፈትሹ! 5 ጥያቄዎች በባህላዊ ግብርና ዘዴዎች ላይ"
+                      ? "የተማሩትን ይፈትሹ! 5 ጥያቄዎች በባህላክ ግብርና ዘዴዎች ላይ"
                       : "Test what you've learned! 5 questions on traditional farming methods"}
                   </p>
                   <Button onClick={() => setQuizStarted(true)} size="lg" className="ethiopic">
